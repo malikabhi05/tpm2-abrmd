@@ -13,13 +13,14 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-      - name: Launch Container
-        env:
+      - name: Launch Action
+        uses:
+          malikabhi05/test-ac/runCI@master
+        with:
           DOCKER_IMAGE: "${{ matrix.DOCKER_IMAGE }}"
           TPM2TSS_BRANCH: "${{ matrix.TPM2TSS_BRANCH }}"
           CC: "${{ matrix.CC }}"
           GIT_FULL_CLONE: true
-        run: ./.ci/ci.sh
       - name: failure
         if: ${{ failure() }}
         run: find -name test-suite.log | xargs cat || true
@@ -41,13 +42,14 @@ jobs:
           docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
       - name: Check out repository
         uses: actions/checkout@v2
-      - name: Launch Container
-        env:
+      - name: Launch Action
+        uses:
+          malikabhi05/test-ac/runCI@master
+        with:
           DOCKER_IMAGE: ${{ matrix.ARCH }}
           TPM2TSS_BRANCH: master
           CC: gcc
           MAKE_TARGET: check
-        run: ./.ci/ci.sh
       - name: failure
         if: ${{ failure() }}
         run: find -name test-suite.log | xargs cat || true
@@ -57,14 +59,15 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-      - name: Launch Container
-        env:
+      - name: Launch Action
+        uses:
+          malikabhi05/test-ac/runCI@master
+        with:
           ENABLE_COVERAGE: true
           DOCKER_IMAGE: ubuntu-18.04
           TPM2TSS_BRANCH: master
           MAKE_TARGET: check
           CC: gcc
-        run: ./.ci/ci.sh
       - name: failure
         if: ${{ failure() }}
         run: find -name test-suite.log | xargs cat || true
