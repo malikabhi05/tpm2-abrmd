@@ -17,6 +17,7 @@ jobs:
         uses:
           malikabhi05/test-ac/runCI@master
         with:
+          PROJECT_NAME: ${{ github.event.repository.name }}
           DOCKER_IMAGE: "${{ matrix.DOCKER_IMAGE }}"
           TPM2TSS_BRANCH: "${{ matrix.TPM2TSS_BRANCH }}"
           CC: "${{ matrix.CC }}"
@@ -46,6 +47,7 @@ jobs:
         uses:
           malikabhi05/test-ac/runCI@master
         with:
+          PROJECT_NAME: ${{ github.event.repository.name }}
           DOCKER_IMAGE: ${{ matrix.ARCH }}
           TPM2TSS_BRANCH: master
           CC: gcc
@@ -63,6 +65,7 @@ jobs:
         uses:
           malikabhi05/test-ac/runCI@master
         with:
+          PROJECT_NAME: ${{ github.event.repository.name }}
           ENABLE_COVERAGE: true
           DOCKER_IMAGE: ubuntu-18.04
           TPM2TSS_BRANCH: master
@@ -81,6 +84,7 @@ jobs:
         uses:
           malikabhi05/test-ac/coverityScan@master
         with:
+          PROJECT_NAME: ${{ github.event.repository.name }}
           ENABLE_COVERITY: true
           TPM2TSS_BRANCH: "3.0.x"
           TPM2TOOLS_BRANCH: "4.0"
