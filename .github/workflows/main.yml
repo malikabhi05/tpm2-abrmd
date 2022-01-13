@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Launch Action
         uses:
-          malikabhi05/test-ac/runCI@master
+          tpm2-software/ci/runCI@main
         with:
           PROJECT_NAME: ${{ github.event.repository.name }}
           DOCKER_IMAGE: "${{ matrix.DOCKER_IMAGE }}"
@@ -45,7 +45,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Launch Action
         uses:
-          malikabhi05/test-ac/runCI@master
+          tpm2-software/ci/runCI@main
         with:
           PROJECT_NAME: ${{ github.event.repository.name }}
           DOCKER_IMAGE: ${{ matrix.ARCH }}
@@ -63,7 +63,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Launch Action
         uses:
-          malikabhi05/test-ac/runCI@master
+          tpm2-software/ci/runCI@main
         with:
           PROJECT_NAME: ${{ github.event.repository.name }}
           ENABLE_COVERAGE: true
@@ -82,7 +82,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Launch Action
         uses:
-          malikabhi05/test-ac/coverityScan@master
+          tpm2-software/ci/coverityScan@main
         with:
           PROJECT_NAME: ${{ github.event.repository.name }}
           ENABLE_COVERITY: true
